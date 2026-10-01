@@ -920,38 +920,333 @@ a:focus-visible, button:focus-visible {
   margin-bottom: 0;
 }
 
-/* RESPONSIVE QUERIES */
+/* Disable legacy template device blocker */
+.device-notification {
+  display: none !important;
+}
+
+/* RESPONSIVE & MOBILE SCROLL ENGINE */
 @media (max-width: 1100px) {
   .skills { max-width: 100%; }
 }
 
 @media (max-width: 900px) {
-  .intro--banner h1 { font-size: 52px; }
-  .about--banner { gap: 36px; }
-  .about--banner h2 { font-size: 48px; }
+  .intro--banner h1 { font-size: 50px; }
+  .about--banner { gap: 32px; }
+  .about--banner h2 { font-size: 46px; }
 }
 
-@media (max-width: 767px) {
-  .intro--banner { min-height: 0; }
-  .intro--banner h1 { font-size: 44px; }
-  .projects { grid-template-columns: 1fr; }
-  .mock, .arch { display: none; }
-  .project { padding: 22px; }
-  .project h3 { font-size: 22px; margin-top: 12px; }
-  .about--banner { flex-direction: column; gap: 20px; }
-  .about--banner h2 { font-size: 40px; }
-  .about--flow { margin-top: 24px; }
-  .skills--row { grid-template-columns: 1fr; }
-  .panel { padding: 16px 20px; }
-  .contact--lockup .modal { padding: 32px 24px; }
+@media (max-width: 768px) {
+  /* Viewport and inner section scrollability */
+  html, body {
+    height: 100%;
+    height: 100dvh;
+    overflow: hidden;
+  }
+
+  .l-viewport {
+    height: 100%;
+    height: 100dvh;
+  }
+
+  .l-wrapper {
+    max-width: 92%;
+    padding: 0;
+  }
+
+  .header {
+    padding: 0 20px;
+    height: 64px;
+  }
+
+  .header--logo p {
+    font-size: 14px;
+  }
+
+  .header--cta {
+    padding: 7px 14px;
+    font-size: 11.5px;
+  }
+
+  /* Allow each section to scroll smoothly when content exceeds viewport */
+  .l-section {
+    overflow-y: auto;
+    overflow-x: hidden;
+    -webkit-overflow-scrolling: touch;
+    padding: 74px 0 60px;
+    box-sizing: border-box;
+    scrollbar-width: none;
+  }
+
+  .l-section::-webkit-scrollbar {
+    display: none;
+  }
+
+  /* Section-specific mobile adjustments */
+  .intro {
+    height: auto;
+    min-height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  .intro--banner {
+    min-height: 0;
+    padding-bottom: 24px;
+  }
+
+  .intro--banner h1 {
+    font-size: 38px;
+    line-height: 1.05;
+  }
+
+  .intro--banner h1 .name {
+    font-size: 12px;
+    letter-spacing: 0.22em;
+    margin-bottom: 12px;
+  }
+
+  .cyber-hud-badge {
+    font-size: 10px;
+    padding: 4px 10px;
+  }
+
+  .intro--lead {
+    font-size: 14px;
+    line-height: 1.5;
+    margin: 14px 0 12px;
+  }
+
+  .intro--tags {
+    font-size: 10px;
+    margin-bottom: 20px;
+  }
+
+  .intro--banner button.cta {
+    padding: 9px 18px;
+    font-size: 12px;
+  }
+
+  .intro--link {
+    font-size: 11px;
+    margin-left: 16px;
+  }
+
+  .intro--options {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 10px;
+    margin-top: 10px;
+  }
+
+  .intro--options > a {
+    padding: 12px 14px;
+  }
+
+  .intro--options h3 {
+    font-size: 13.5px;
+    margin-bottom: 3px;
+  }
+
+  .intro--options p {
+    font-size: 12px;
+    line-height: 1.4;
+  }
+
+  /* Work / Projects */
+  .work {
+    height: auto;
+    min-height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 10px 0;
+  }
+
+  .work--head {
+    margin-bottom: 16px;
+  }
+
+  .work--head h2 {
+    font-size: 28px;
+  }
+
+  .work--head p {
+    font-size: 13px;
+  }
+
+  .projects {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+
+  .project {
+    padding: 20px;
+  }
+
+  .project h3 {
+    font-size: 20px;
+    margin: 12px 0 6px;
+  }
+
+  .project p {
+    font-size: 13px;
+    margin-bottom: 12px;
+  }
+
+  .mock, .arch {
+    display: none;
+  }
+
+  .features {
+    grid-template-columns: 1fr 1fr;
+    gap: 6px 12px;
+    font-size: 12px;
+    margin-bottom: 14px;
+  }
+
+  /* About */
+  .about {
+    height: auto;
+    min-height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 10px 0;
+  }
+
+  .about--banner {
+    flex-direction: column;
+    gap: 18px;
+  }
+
+  .about--banner h2 {
+    font-size: 34px;
+  }
+
+  .about--copy {
+    padding: 18px 20px;
+  }
+
+  .about--copy p {
+    font-size: 13.5px;
+    line-height: 1.55;
+    margin-bottom: 12px;
+  }
+
+  .about--secondary {
+    font-size: 12.5px !important;
+  }
+
+  .about--flow {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+    margin-top: 16px;
+  }
+
+  .about--flow li {
+    padding: 12px 10px;
+    font-size: 12px;
+  }
+
+  .about--flow li span {
+    font-size: 9.5px;
+  }
+
+  /* Skills */
+  .skills {
+    height: auto;
+    min-height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 10px 0;
+  }
+
+  .skills h2 {
+    font-size: 28px;
+    margin-bottom: 14px;
+  }
+
+  .skills--primary {
+    padding: 16px 18px;
+    margin-bottom: 12px;
+  }
+
+  .skills--primary h3 {
+    font-size: 16px;
+    margin-bottom: 10px;
+  }
+
+  .skills--row {
+    grid-template-columns: 1fr;
+    gap: 12px;
+    margin-bottom: 12px;
+  }
+
+  .panel {
+    padding: 16px 18px;
+  }
+
+  .panel h3 {
+    font-size: 14px;
+    margin-bottom: 10px;
+  }
+
+  .chip {
+    padding: 5px 10px;
+    font-size: 11.5px;
+  }
+
+  .chip--lg {
+    padding: 6px 12px;
+    font-size: 12px;
+  }
+
+  /* Contact */
+  .contact {
+    height: auto;
+    min-height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 10px 0;
+  }
+
+  .contact--lockup .modal {
+    width: 100%;
+    padding: 28px 20px;
+  }
+
+  .modal h2 {
+    font-size: 24px;
+  }
+
+  .modal--lead {
+    font-size: 13.5px;
+    margin-bottom: 18px;
+  }
+
+  .modal--information a {
+    font-size: 15px !important;
+  }
+
+  .contact--lockup .modal--options li a {
+    font-size: 13px;
+    padding: 10px;
+  }
 }
 
-@media (max-width: 600px) {
-  .intro--banner h1 { font-size: 38px; }
-  .intro--link { margin-left: 14px; }
-  .features { grid-template-columns: 1fr 1fr; font-size: 12px; }
-  .about--copy p { font-size: 14px; }
-  .about--flow { display: none; }
+@media (max-width: 480px) {
+  .about--flow {
+    grid-template-columns: 1fr;
+  }
+  
+  .features {
+    grid-template-columns: 1fr;
+  }
 }
 
 @media (prefers-reduced-motion: reduce) {

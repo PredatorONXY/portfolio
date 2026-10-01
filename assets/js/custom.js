@@ -89,6 +89,8 @@
 
   // --- 2. 3D Card Physics & Interactive Spotlight ---
   function init3DTiltAndSpotlight() {
+    if (window.matchMedia('(pointer: coarse)').matches) return;
+
     const cards = document.querySelectorAll('.project, .panel, .intro--options > a, .about--copy, .contact--lockup .modal, .about--flow li');
     
     cards.forEach((card) => {
